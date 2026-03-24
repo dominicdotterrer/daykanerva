@@ -2,6 +2,8 @@
 title: 'Everybody Gets a Software Company'
 description: 'On AI, democratized markets, and what happens when the barrier to entry collapses'
 pubDate: 'Mar 24 2026'
+heroImage: '../../assets/ship-in-a-bottle.jpg'
+
 ---
 
 Welcome!. This is my first post on this site, and that small fact is worth acknowledging. I have started blogs before — started them with genuine enthusiasm, written one or two posts with care, and then watched them quietly go dark as the gap between having something to say and actually sitting down to say it grew wider than I could manage. Life moves fast, good ideas don't always survive the commute from brain to keyboard, and maintaining any kind of cadence requires a discipline I have historically not had.
