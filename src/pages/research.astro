@@ -50,6 +50,11 @@ const publications = [
     arxivId: "math/0607352",
     abstract: "The operation of zig-zag products of graphs is the analogue of the semidirect product of groups. Using this observation, we present a categorical description of zig-zag products in order to generalize the construction for the category of simple graphs. Also, we examine the covering properties of zig-zag products and we utilize these results to estimate their spectral invariants in general. In addition, we provide specific spectral analysis for some such products.",
   },
+  {
+    title: "The (co)isoperimetric problem in (random) polyhedra (Ph.D. Thesis)",
+    url: "https://utoronto.scholaris.ca/server/api/core/bitstreams/9ece79b1-727f-4d14-822a-011ec8455bd8/content",
+    abstract: "We consider some aspects of the global geometry of cellular complexes. Motivated by techniques in graph theory, we develop combinatorial versions of isoperimetric and Poincaré inequalities, and use them to derive various geometric and topological estimates. This has a progression of three major topics: (1) We define isoperimetric inequalities for normed chain complexes. In the graph case, these quantities boil down to various notions of graph expansion. We also develop some randomized algorithms which provide (in expectation) solutions to these isoperimetric problems. (2) We use these isoperimetric inequalities to derive topological and geometric estimates for certain models of random simplicial complexes. These models are generalizations of the well-known models of random graphs. (3) Using these random complexes as examples, we show that there are simplicial complexes which cannot be embedded into Euclidean space while faithfully preserving the areas of minimal surfaces.",
+  },
 ];
 ---
 
@@ -66,7 +71,7 @@ const publications = [
         {publications.map((pub) => (
           <li class="publication">
             <h2>
-              <a href={`https://arxiv.org/pdf/${pub.arxivId}`} target="_blank" rel="noopener noreferrer">
+              <a href={pub.url ?? `https://arxiv.org/pdf/${pub.arxivId}`} target="_blank" rel="noopener noreferrer">
                 {pub.title}
               </a>
             </h2>
