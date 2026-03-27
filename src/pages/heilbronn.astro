@@ -1,0 +1,31 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import HeilbronnGame from '../components/HeilbronnGame';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Heilbronn Triangle Game"
+			description="Place points inside a disk and try to maximize the area of the smallest triangle they form."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<HeilbronnGame client:only="react" />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 600px;
+		margin: 0 auto;
+		padding: 2rem 1rem 3rem;
+	}
+</style>

@@ -1,0 +1,45 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="The Heilbronn Triangle Problem"
+			description="Learn about the Heilbronn Triangle Problem — a classic combinatorial geometry challenge."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="content">
+				<h1>The Heilbronn Triangle Problem</h1>
+				<p>
+					Content coming soon. This page will explain the mathematics behind the Heilbronn
+					Triangle Problem and how the game scoring works.
+				</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 860px;
+		margin: 0 auto;
+		padding: 2rem 1rem 3rem;
+	}
+
+	.content h1 {
+		margin-bottom: 1.25rem;
+	}
+
+	.content p {
+		line-height: 1.8;
+		font-size: 1.05rem;
+	}
+</style>
