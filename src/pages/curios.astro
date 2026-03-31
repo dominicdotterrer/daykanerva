@@ -1,0 +1,97 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+
+const curios = [
+  {
+    title: "Resting Bodies",
+    url: "https://www.cs.cmu.edu/~kmcrane/Projects/RestingBodies/",
+    abstract: "This paper explores the analysis and design of the resting configurations of a rigid body, without the use of physical simulation. In particular, given a rigid body in R³, we identify all possible stationary points, as well as the probability that the body will stop at these points, assuming a random initial orientation and negligible momentum. The forward version of our method can hence be used to automatically orient models, to provide feedback about object stability during the design process, and to furnish plausible distributions of shape orientation for natural scene modeling. Moreover, a differentiable inverse version of our method lets us design shapes with target resting behavior, such as dice with target, nonuniform probabilities. Here we find solutions that would be nearly impossible to find using classical techniques, such as dice with additional unstable faces that provide more natural overall geometry.",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Curios | ${SITE_TITLE}`} description="Interesting links and curiosities" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>Curios</h1>
+      <p class="intro">A collection of links to things I find interesting — math, geometry, computation, and whatever else catches my eye.</p>
+      <ul class="curios">
+        {curios.map((item) => (
+          <li class="curio">
+            <h2>
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                {item.title}
+              </a>
+            </h2>
+            <blockquote class="abstract">"{item.abstract}"</blockquote>
+          </li>
+        ))}
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  .intro {
+    color: rgb(var(--gray));
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .curios {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .curio {
+    border-top: 1px solid rgba(var(--gray), 30%);
+    padding-top: 2rem;
+  }
+
+  .curio h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .curio h2 a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .curio h2 a:hover {
+    text-decoration: underline;
+  }
+
+  .abstract {
+    margin: 0;
+    padding-left: 1rem;
+    border-left: 3px solid rgba(var(--gray), 30%);
+    color: rgb(var(--gray));
+    line-height: 1.7;
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+</style>
