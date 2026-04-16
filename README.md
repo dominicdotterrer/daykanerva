@@ -1,62 +1,47 @@
-# Astro Starter Kit: Blog
+# daykanerva.com
 
-```sh
-npm create astro@latest -- --template blog
+Personal website of Dominic Dotterrer — research, interactive math games, and writing.
+
+Live at [daykanerva.com](https://daykanerva.com). Deployed on Netlify.
+
+## Stack
+
+- **Astro 6** — static site generation with file-based routing
+- **React 19** — interactive game components (client-side only)
+- **TypeScript**
+- **MDX / Markdown** — blog posts via Astro content collections
+
+## Project Structure
+
+```
+src/
+├── components/            # Astro + React components
+│   └── HeilbronnGame.tsx  # Interactive game (React + Pyodide)
+├── content/
+│   └── blog/              # Markdown/MDX blog posts
+├── layouts/
+│   └── BlogPost.astro     # Blog post template
+├── pages/
+│   ├── index.astro        # Home
+│   ├── about.astro        # About
+│   ├── research.astro     # Publications list
+│   ├── math-games.astro   # Math games hub
+│   ├── heilbronn.astro    # Heilbronn Triangle Game
+│   ├── heilbronn-learn.astro  # Heilbronn problem explainer
+│   ├── curios.astro       # Curated links
+│   └── blog/              # Blog listing + dynamic post routes
+public/
+└── wheels/                # Python wheels for in-browser (Pyodide) execution
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-Features:
+All commands run from the project root:
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+| Command             | Action                                 |
+| :------------------ | :------------------------------------- |
+| `npm install`       | Install dependencies                   |
+| `npm run dev`       | Start dev server at `localhost:4321`   |
+| `npm run build`     | Build production site to `./dist/`     |
+| `npm run preview`   | Preview production build locally       |
+| `npm run astro ...` | Run Astro CLI commands                 |
