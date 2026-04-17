@@ -1,0 +1,31 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import CrossSectionGame from '../components/CrossSectionGame';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Cross-Sections of Cubes"
+			description="Generate random 2D cross-sections of the N-dimensional hypercube and watch concentration of measure in action."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<CrossSectionGame client:only="react" />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 600px;
+		margin: 0 auto;
+		padding: 2rem 1rem 3rem;
+	}
+</style>

@@ -1,0 +1,204 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Cross-Sections of Cubes — Learn"
+			description="The mathematics behind random 2D cross-sections of the N-dimensional hypercube: concentration of measure and Dvoretzky's theorem."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="content">
+				<h1>Cross-Sections of Cubes</h1>
+				<p class="lead">
+					Pick a dimension N, generate a random 2D slice of the hypercube
+					&#91;&minus;1,&nbsp;1&#93;<sup>N</sup>, and watch it grow rounder as N grows.
+					<a href="/cross-sections-of-cubes">Try it yourself.</a>
+				</p>
+
+				<h2>What am I looking at?</h2>
+				<table>
+					<thead>
+						<tr><th>Shape</th><th>Meaning</th></tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><strong>Light-blue circle</strong></td>
+							<td>Circumscribed circle — smallest circle <em>enclosing</em> the cross-section</td>
+						</tr>
+						<tr>
+							<td><strong>Purple polygon</strong></td>
+							<td>The actual cross-section of &#91;&minus;1,&nbsp;1&#93;<sup>N</sup> with the random 2D plane</td>
+						</tr>
+						<tr>
+							<td><strong>Dark inner circle</strong></td>
+							<td>Inscribed circle — largest circle <em>fitting inside</em> the cross-section</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p>
+					The <strong>inradius / circumradius ratio</strong> measures roundness. A ratio of 1
+					means the cross-section is a perfect disk; smaller values indicate a more irregular polygon.
+					Both radii scale like <span class="math">&radic;(N / (2 log N))</span> for a random plane
+					in <strong>R</strong><sup>N</sup>, so the absolute sizes grow with N — the display is always
+					normalised to the circumscribed radius.
+				</p>
+
+				<hr />
+
+				<h2>Why does it get rounder as N grows?</h2>
+				<p>This is the <strong>concentration of measure</strong> phenomenon.</p>
+				<blockquote>
+					<strong>Dvoretzky's theorem (1961):</strong> Every infinite-dimensional Banach space contains
+					almost-isometric copies of Euclidean space of arbitrarily high dimension. For
+					the hypercube, <em>almost every</em> 2D cross-section through the centre is approximately
+					circular, with the approximation improving as N &rarr; &infin;.
+				</blockquote>
+				<p>
+					The convergence is logarithmically slow — you need to push N into the hundreds
+					before the roundness becomes visually striking. But the direction of travel is
+					unmistakable: keep pressing the button at N = 200 and you will rarely see anything
+					very far from round.
+				</p>
+
+				<h2>Why only O(log N) polygon edges?</h2>
+				<p>
+					Each edge of the cross-section corresponds to one hypercube facet x<sub>k</sub> = &plusmn;1
+					whose perpendicular foot from the origin actually lands inside the polygon. Whether foot k
+					is inside depends on how much each <em>other</em> column j "sees" of column k.
+					A Parseval-type identity pins this down exactly: if <strong>c</strong><sub>k</sub> denotes
+					the k-th column of the orthonormal basis, then
+				</p>
+				<p class="equation">
+					&sum;<sub>j=1</sub><sup>N</sup> (<strong>c</strong><sub>j</sub> &middot;
+					<strong>c</strong><sub>k</sub> / &Vert;<strong>c</strong><sub>k</sub>&Vert;<sup>2</sup>)<sup>2</sup>
+					= 1 / &Vert;<strong>c</strong><sub>k</sub>&Vert;<sup>2</sup>.
+				</p>
+				<p>
+					For a <em>typical</em> column with &Vert;<strong>c</strong><sub>k</sub>&Vert;<sup>2</sup>
+					&asymp; 2/N, the right-hand side is N/2, spread over N terms — so most ratios have magnitude
+					&sim; 1/&radic;2 and many exceed 1, meaning foot k is <em>outside</em> the polygon.
+					Only the O(log N) <em>extremal</em> columns — those whose norm is
+					&Theta;(&radic;(log N / N)) by extreme-value theory — have a small enough right-hand
+					side that all ratios are safely below 1.
+				</p>
+				<p>
+					The upshot is a beautiful coincidence: Dvoretzky's theorem does <strong>not</strong> require
+					many polygon sides. It requires that the few sides present are <em>well-placed</em>. Because
+					all extremal column norms concentrate near the same value &radic;(2 log N / N), their feet all
+					land at radius &asymp; &radic;(N / (2 log N)) and spread nearly uniformly in angle — making
+					the O(log N)-gon almost perfectly round.
+				</p>
+
+				<hr />
+
+				<h2>Two celebrated consequences</h2>
+				<p>
+					<strong>Johnson–Lindenstrauss lemma (1984).</strong> Any n points in
+					&ell;<sup>2</sup> can be projected down to k = O(log n / &epsilon;<sup>2</sup>) dimensions
+					while preserving <em>all</em> pairwise distances to within a factor (1 &plusmn; &epsilon;).
+					The proof is essentially the statement that random Gaussian projections concentrate — the same
+					mechanism that makes the cross-sections here round.
+				</p>
+				<p>
+					<strong>Lindenstrauss: &ell;<sup>2</sup> embeds almost isometrically into &ell;<sup>1</sup>.</strong>
+					A random linear map from &ell;<sub>2</sub><sup>N</sup> into &ell;<sup>1</sup> is nearly
+					isometric with high probability. Concretely, &ell;<sup>2</sup> embeds into &ell;<sup>1</sup>
+					with distortion that can be made arbitrarily close to 1 by taking the ambient dimension large
+					enough. The cross-section you see in the game is the two-dimensional slice of exactly this
+					phenomenon: a random 2D plane "looks Euclidean" inside the &ell;<sup>&infin;</sup> ball
+					(the hypercube), and the fidelity of that illusion grows with N.
+				</p>
+
+				<p class="footer-note">
+					Increase N and press the button repeatedly. Even though any individual
+					cross-section can still look angular at moderate N, the <em>typical</em> cross-section
+					becomes progressively rounder — demonstrating that "most directions look the same"
+					in high dimensions.
+				</p>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 2rem 1rem 3rem;
+	}
+
+	.content h1 {
+		margin-bottom: 0.5rem;
+	}
+
+	.lead {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		margin-bottom: 2rem;
+		color: rgb(var(--gray-dark));
+	}
+
+	h2 {
+		margin-top: 2rem;
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1rem 0;
+		font-size: 0.95rem;
+	}
+
+	th, td {
+		border: 1px solid rgb(var(--gray-light));
+		padding: 0.5rem 0.75rem;
+		text-align: left;
+	}
+
+	th {
+		background: rgb(var(--gray-light));
+		font-weight: 600;
+	}
+
+	blockquote {
+		border-left: 3px solid var(--accent);
+		margin: 1.5rem 0;
+		padding: 0.75rem 1.25rem;
+		background: rgba(var(--gray-light), 0.4);
+		line-height: 1.7;
+	}
+
+	.equation {
+		text-align: center;
+		font-size: 1.05rem;
+		margin: 1rem 0;
+		line-height: 2;
+	}
+
+	.math {
+		font-style: italic;
+	}
+
+	hr {
+		border: none;
+		border-top: 1px solid rgb(var(--gray-light));
+		margin: 2rem 0;
+	}
+
+	.footer-note {
+		margin-top: 2rem;
+		font-style: italic;
+		color: rgb(var(--gray));
+		line-height: 1.7;
+	}
+</style>
