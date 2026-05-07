@@ -8,6 +8,7 @@ const publications = [
   {
     title: "Long Document Summarization in a Low Resource Setting using Pretrained Language Models",
     arxivId: "2103.00751",
+    venue: "ACL-IJCNLP 2021",
     abstract: "Abstractive summarization is the task of compressing a long document into a coherent short document while retaining salient information. Modern abstractive summarization methods are based on deep neural networks which often require large training datasets. Since collecting summarization datasets is an expensive and time-consuming task, practical industrial settings are usually low-resource. In this paper, we study a challenging low-resource setting of summarizing long legal briefs with an average source document length of 4268 words and only 120 available (document, summary) pairs. To account for data scarcity, we used a modern pretrained abstractive summarizer BART (Lewis et al., 2020), which only achieves 17.9 ROUGE-L as it struggles with long documents. We thus attempt to compress these long documents by identifying salient sentences in the source which best ground the summary, using a novel algorithm based on GPT-2 (Radford et al., 2019) language model perplexity scores, that operates within the low resource regime. On feeding the compressed documents to BART, we observe a 6.0 ROUGE-L improvement. Our method also beats several competitive salience detection baselines. Furthermore, the identified salient sentences tend to agree with an independent human labeling by domain experts.",
   },
   {
@@ -18,31 +19,37 @@ const publications = [
   {
     title: "Quantitative null-cobordism",
     arxivId: "1610.04888",
+    venue: "Journal of the American Mathematical Society 31 (4), 1165–1203",
     abstract: "For a given null-cobordant Riemannian n-manifold, how does the minimal geometric complexity of a null-cobordism depend on the geometric complexity of the manifold? In [Gro99], Gromov conjectured that this dependence should be linear. We show that it is at most a polynomial whose degree depends on n. This construction relies on another of independent interest. Take X and Y to be sufficiently nice compact metric spaces, such as Riemannian manifolds or simplicial complexes. Suppose Y is simply connected and rationally homotopy equivalent to a product of Eilenberg-MacLane spaces: for example, any simply connected Lie group. Then two homotopic L-Lipschitz maps f, g : X → Y are homotopic via a CL-Lipschitz homotopy. We present a counterexample to show that this is not true for larger classes of spaces Y.",
   },
   {
     title: "2-complexes with large 2-girth",
     arxivId: "1509.03871",
+    venue: "Discrete & Computational Geometry 59 (2), 383–412",
     abstract: "The 2-girth of a 2-dimensional simplicial complex X is the minimum size of a non-zero 2-cycle in H₂(X, ℤ/2). We consider the maximum possible girth of a complex with n vertices and m 2-faces. If m = n^{2+α} for α < 1/2, then we show that the 2-girth is at most 4n^{2−2α} and we prove the existence of complexes with 2-girth at least c_{α,ε} n^{2−2α−ε}. On the other hand, if α > 1/2, the 2-girth is at most C_α. So there is a phase transition as α passes 1/2. Our results depend on a new upper bound for the number of combinatorial types of triangulated surfaces with v vertices and f faces.",
   },
   {
     title: "On Expansion and Topological Overlap",
     arxivId: "1506.04558",
+    venue: "Geometriae Dedicata 195 (1), 307–317",
     abstract: "We give a detailed and easily accessible proof of Gromov's Topological Overlap Theorem. Let X be a finite simplicial complex or, more generally, a finite polyhedral cell complex of dimension d. Informally, the theorem states that if X has sufficiently strong higher-dimensional expansion properties (which generalize edge expansion of graphs and are defined in terms of cellular cochains of X) then X has the following topological overlap property: for every continuous map X → ℝᵈ there exists a point p ∈ ℝᵈ that is contained in the images of a positive fraction μ > 0 of the d-cells of X. More generally, the conclusion holds if ℝᵈ is replaced by any d-dimensional piecewise-linear (PL) manifold M, with a constant μ that depends only on d and on the expansion properties of X, but not on M.",
   },
   {
     title: "Higher dimensional distortion of random complexes",
     arxivId: "1210.6951",
+    venue: "Mathematical Research Letters 22 (5), 1295–1316",
     abstract: "Using the random complexes of Linial and Meshulam, we exhibit a large family of simplicial complexes for which, whenever affinely embedded into Euclidean space, the filling areas of simplicial cycles is greatly distorted. This phenomenon can be regarded as a higher order analogue of the metric distortion of embeddings of random graphs.",
   },
   {
     title: "The filling problem in the cube",
     arxivId: "1202.5788",
+    venue: "Discrete & Computational Geometry 55 (2), 249–262",
     abstract: "We prove an isoperimetric inequality for filling cellular cycles in a high dimensional cube with cellular chains. In addition, we provide a family of cubical cellular cycles for which the exponent in the inequality is optimal.",
   },
   {
     title: "Coboundary expanders",
     arxivId: "1012.5316",
+    venue: "Journal of Topology and Analysis 4 (4), 499–514",
     abstract: "We describe a natural topological generalization of edge expansion for graphs to regular CW complexes and prove that this property holds with high probability for certain random complexes.",
   },
   {
@@ -53,6 +60,7 @@ const publications = [
   {
     title: "The (co)isoperimetric problem in (random) polyhedra (Ph.D. Thesis)",
     url: "https://utoronto.scholaris.ca/server/api/core/bitstreams/9ece79b1-727f-4d14-822a-011ec8455bd8/content",
+    venue: "Ph.D. Thesis, University of Toronto, 2014",
     abstract: "We consider some aspects of the global geometry of cellular complexes. Motivated by techniques in graph theory, we develop combinatorial versions of isoperimetric and Poincaré inequalities, and use them to derive various geometric and topological estimates. This has a progression of three major topics: (1) We define isoperimetric inequalities for normed chain complexes. In the graph case, these quantities boil down to various notions of graph expansion. We also develop some randomized algorithms which provide (in expectation) solutions to these isoperimetric problems. (2) We use these isoperimetric inequalities to derive topological and geometric estimates for certain models of random simplicial complexes. These models are generalizations of the well-known models of random graphs. (3) Using these random complexes as examples, we show that there are simplicial complexes which cannot be embedded into Euclidean space while faithfully preserving the areas of minimal surfaces.",
   },
 ];
@@ -75,6 +83,7 @@ const publications = [
                 {pub.title}
               </a>
             </h2>
+            {pub.venue && <p class="venue">{pub.venue}</p>}
             <p class="abstract">{pub.abstract}</p>
           </li>
         ))}
@@ -121,6 +130,13 @@ const publications = [
 
   .publication h2 a:hover {
     text-decoration: underline;
+  }
+
+  .venue {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: rgb(var(--gray-dark));
   }
 
   .abstract {
